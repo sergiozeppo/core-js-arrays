@@ -286,8 +286,8 @@ function createNDimensionalArray(/* n, size */) {
  *    flattenArray(['a', ['b', ['c', 'd'], 'e'], 'f']) => ['a', 'b', 'c', 'd', 'e', 'f']
  *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
  */
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  return nestedArray.flat(Infinity);
 }
 
 /**
@@ -320,8 +320,12 @@ function selectMany(arr, childrenSelector) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  const resultBalance = arr.reduce(
+    (balance, [inc, exp]) => balance + (inc - exp),
+    0
+  );
+  return resultBalance;
 }
 
 /**
@@ -370,8 +374,10 @@ function generateOdds(len) {
  *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
-function getElementByIndices(/* arr, indices */) {
-  throw new Error('Not implemented');
+function getElementByIndices(arr, indices) {
+  return indices.reduce((acc, index) => {
+    return acc[index];
+  }, arr);
 }
 
 /**
@@ -408,8 +414,10 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return Array.from({ length: n }, (_, index) =>
+    Array.from({ length: n }, (__, index2) => (index2 === index ? 1 : 0))
+  );
 }
 
 /**
@@ -464,8 +472,9 @@ function getHexRGBValues(arr) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const result = arr.sort((a, b) => b - a).slice(0, n);
+  return result;
 }
 
 /**
@@ -480,8 +489,9 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  const result = arr1.filter((el) => arr2.includes(el));
+  return result;
 }
 
 /**
